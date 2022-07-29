@@ -71,6 +71,9 @@ if (isset($_GET['id'])) {
                           <label class="custom-control-label" for="customCheck">Remember Me</label>
                         </div>
                       </div>
+                      <div class="form-group">
+                        <a class="small" href="register.php">Create an Account!</a>
+                      </div>
                       <input type="submit" name="login" class="btn btn-lg btn-primary btn-user btn-block" value="LOGIN">
                       <hr>
                       <div class="copyright text-center my-auto">
@@ -88,6 +91,7 @@ if (isset($_GET['id'])) {
 
                     if (mysqli_num_rows($querylogin) > 0) {
                       $_SESSION['username'] = $username;
+                      $_SESSION['password'] = $password;
                       $_SESSION['stat'] = 'masuk';
                       echo "<script type ='text/JavaScript'>alert('berhasil masuk selamat datang $username ')</script>";
                       echo ($_SESSION['stat']);

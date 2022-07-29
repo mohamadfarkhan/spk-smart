@@ -118,7 +118,11 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
+                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#passwordModal">
+                                    <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Ganti Kata Sandi
+                                </a>    
+                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -145,6 +149,41 @@
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                 <a class="btn btn-primary" href="logout.php">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Masukkan Kata Sandi Baru</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                 <?php
+                                    include 'koneksi.php';
+                                    $sql = "SELECT * FROM user";
+                                    $query = mysqli_query($conn, $sql);
+                                    $user = mysqli_fetch_array($query)
+
+                                ?>
+                                <form method="POST" action="change.php">
+                                    <div class="form-group">
+                                        <label >Username</label>
+                                        <input type="text" class="form-control" value="<?= $_SESSION['username'] ?>" name="username" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label >Kata Sandi Baru</label>
+                                        <input type="password" class="form-control" name="password_baru" value="<?= $_SESSION['password'] ?>">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="reset" data-dismiss="modal">Reset</button>
+                                        <button type="submit" class="btn btn-primary" name="ganti" id="Ganti">Ubah Kata Sandi</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
