@@ -14,7 +14,7 @@ if (isset($_POST['tambah'])) {
     $query = mysqli_query($conn, $sql);
     if ($query) {
         echo "<script type='text/Javascript'>alert('berhasil memasukkan data Alternatif')</script>";
-        header('location:../anggota.php');
+        header('location:../dataAnggota.php');
     } else {
         echo "<script type='text/Javascript'>alert('Gagal Memasukkan data')</script>";
         header('location:../anggota.php');

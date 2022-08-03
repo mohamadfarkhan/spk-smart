@@ -68,7 +68,7 @@ include 'koneksi.php';
                                     <td class="text-center"><?= round($kriteria['bobot'] / $jumlah, $jumlahkriteria) ?></td>
                                     <td class="text-center">
                                         <a href="updateKriteria.php?id=<?php echo $kriteria['id_kriteria']; ?>" class="btn btn-warning"><i class="fa fa-edit fa-fw"></i></a>
-                                        <a href='' class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash fa-fw"></i></a>
+                                        <a href='' class="btn btn-danger" data-toggle="modal" data-target="#deleteModal<?= $n ?>"><i class="fa fa-trash fa-fw"></i></a>
                                     </td>
                                 </tr>
                             <?php
@@ -101,7 +101,7 @@ $sql = "SELECT * FROM kriteria";
 $query = mysqli_query($conn, $sql);
 $kriteria = mysqli_fetch_assoc($query);
 ?>
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal<?= $n ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
