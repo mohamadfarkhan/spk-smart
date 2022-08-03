@@ -1,13 +1,13 @@
 <?php
 include '../koneksi.php';
 
-if (isset($_POST['create'])) {
-    $username   = $_POST['username'];
-    $nama   = $_POST['nama'];
-    $password = md5($_POST['sandi']);
+if (isset($_POST['buat'])) {
+    $user   = $_POST['user'];
+    $name   = $_POST['name'];
+    $sandi = md5($_POST['sandi']);
 
     //sql insert to akun
-    $sql = "INSERT INTO user (username, nama, password) VALUES ('$username','$nama','$password')";
+    $sql = "INSERT INTO user (username, nama, password) VALUES ('$user','$name','$sandi')";
     $query = mysqli_query($conn, $sql);
     if ($query) {
         echo "<script type='text/Javascript'>alert('Akun berhasil dibuat! Silahkan login.')</script>";

@@ -2,6 +2,19 @@
 session_start();
 include 'koneksi.php';
 
+$timeout = 1; // setting timeout dalam menit
+$logout = "logout.php"; // redirect halaman logout
+$timeout = $timeout * 60; // menit ke detik
+if (isset($_SESSION['start_session'])) {
+  $elapsed_time = time() - $_SESSION['start_session'];
+  if ($elapsed_time >= $timeout) {
+    session_destroy();
+    echo "<script type='text/javascript'>alert('Sesi telah berakhir');window.location='$logout'</script>";
+  }
+}
+
+$_SESSION['start_session'] = time();
+
 if (isset($_GET['id'])) {
   if ($_GET['id'] == 'false') {
     echo "<script type ='text/JavaScript'>alert('username / password salah. Gagal masuk.')</script>";
@@ -77,7 +90,7 @@ if (isset($_GET['id'])) {
                       <input type="submit" name="login" class="btn btn-lg btn-primary btn-user btn-block" value="LOGIN">
                       <hr>
                       <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Mohamad Farkhan 2022</span>
+                        <span><?php echo "Copyright &copy" . (int)date('Y') . " Mohamad Farkhan" ?></span>
                       </div>
                     </fieldset>
                   </form>

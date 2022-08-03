@@ -16,14 +16,17 @@ include 'koneksi.php';
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
-                                <tr>
-                                    <th class="text-center" scope="col">No</th>
-                                    <th class="text-center" scope="col">Nama Anggota</th>
-                                    <th class="text-center" scope="col">Nilai Pengetahuan</th>
-                                    <th class="text-center" scope="col">Nilai Kopdar</th>
-                                    <th class="text-center" scope="col">Nilai Family Gathering</th>
-                                    <th class="text-center" scope="col">Nilai Bobot Evaluasi</th>
-                                    <th class="text-center" scope="col">Keterangan</th>
+                                <tr class="text-center">
+                                    <th rowspan="2">No</th>
+                                    <th rowspan="2">Nama Anggota</th>
+                                    <th colspan="3">Nilai</th>
+                                    <th rowspan="2">Aksi</th>
+                                    <th rowspan="2">Keterangan</th>
+                                </tr>
+                                <tr class="text-center">
+                                    <th>Pengetahuan</th>
+                                    <th>Kopdar</th>
+                                    <th>Famgath</th>
                                 </tr>
                             </thead>
                             <tbody>

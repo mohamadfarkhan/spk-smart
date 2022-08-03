@@ -18,14 +18,17 @@ include 'koneksi.php';
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
+                                <thead align="center">
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama Anggota</th>
-                                        <th>Nilai Pengetahuan</th>
-                                        <th>Nilai Kopdar</th>
-                                        <th>Nilai Family Gathering</th>
-                                        <th>Aksi</th>
+                                        <th rowspan="2">No</th>
+                                        <th rowspan="2">Nama Anggota</th>
+                                        <th colspan="3">Nilai</th>
+                                        <th rowspan="2">Aksi</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Pengetahuan</th>
+                                        <th>Kopdar</th>
+                                        <th>Family Gathering</th>
                                     </tr>
                                 </thead>
                                 <tbody>
