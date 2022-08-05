@@ -14,6 +14,23 @@ include 'koneksi.php';
                         <a href="dataAnggota.php" class="btn btn-info float-right">Data Anggota</a>
                     </h1>
                 </div>
+                <?php
+                if (isset($_GET['message'])) {
+                    if ($_GET['message'] == "success") {
+                        echo "
+                            <div class='alert alert-success ml-3 mr-3 mt-5'>
+                            Nilai Berhasil diinputkan!
+                            </div>
+                        ";
+                    } else if ($_GET['message'] == "failed") {
+                        echo "
+                            <div class='alert alert-danger ml-3 mr-3 mt-5'>
+                            Mohon coba lagi dan periksa kembali koneksi anda!
+                            </div>
+                        ";
+                    }
+                }
+                ?>
                 <div class="card-body">
                     <form role="form" action="aksi/tambahAnggota.php" method="POST">
                         <div class="form-group">

@@ -10,10 +10,8 @@ if (isset($_POST['buat'])) {
     $sql = "INSERT INTO user (username, nama, password) VALUES ('$user','$name','$sandi')";
     $query = mysqli_query($conn, $sql);
     if ($query) {
-        echo "<script type='text/Javascript'>alert('Akun berhasil dibuat! Silahkan login.')</script>";
-        header('location:../login.php');
+        header('location:../register.php?message=success');
     } else {
-        echo "<script type='text/Javascript'>alert('Akun gagal dibuat')</script>";
-        header('location:../register.php');
+        header('location:../register.php?message=failed');
     }
 }

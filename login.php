@@ -68,8 +68,29 @@ if (isset($_GET['id'])) {
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">LOGIN SPK</h1>
-                    <img src="img/gambar.jpg" alt="logo_bismania" class="img-thumbnail mb-4">
+                    <a href="login.php"><img src="img/gambar.jpg" alt="logo_bismania" class="img-thumbnail mb-4"></a>
                   </div>
+                  <?php
+                  if (isset($_GET['message'])) {
+                    if ($_GET['message'] == "gagal") {
+                      echo "<div class='alert alert-danger'>
+                                        Username dan Password tidak sesuai !
+                                        </div>";
+                    } else if ($_GET['message'] == "login") {
+                      echo "<div class='alert alert-warning'>
+                                        Silahkan login terlebih dahulu !!!
+                                        </div>";
+                    } else if ($_GET['message'] == "logout") {
+                      echo "<div class='alert alert-success'>
+                                        Silahkan login kembali.
+                                        </div>";
+                    } else if ($_GET['message'] == "sesi") {
+                      echo "<div class='alert alert-success'>
+                                        Sesi anda telah berakhir, Silahkan login kembali.
+                                        </div>";
+                    }
+                  }
+                  ?>
                   <form role="form" action="" method="POST">
                     <fieldset>
                       <div class="form-group">
@@ -108,9 +129,9 @@ if (isset($_GET['id'])) {
                       $_SESSION['stat'] = 'masuk';
                       echo "<script type ='text/JavaScript'>alert('berhasil masuk selamat datang $username ')</script>";
                       echo ($_SESSION['stat']);
-                      header("location:index.php");
+                      header("location:index.php?pesan=sukses");
                     } else {
-                      echo "<script type ='text/JavaScript'>alert('username/password salah')</script>";
+                      header("location:login.php?pesan=gagal");
                     }
                   }
                   ?>

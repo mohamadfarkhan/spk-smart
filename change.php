@@ -8,10 +8,8 @@ if (isset($_POST['ganti'])) {
             where username = '$username'";
     $result = mysqli_query($conn, $sql);
     if ($result) {
-        echo "<script>alert('Kata Sandi Berhasil Diubah, Silahkan Login Ulang.')</script>";
         header("location:logout.php");
     } else {
-        echo "<script>alert('Ubah Kata Sandi Gagal, Periksa kembali koneksi internet anda.')</script>";
-        header("location:index.php");
+        header("location:index.php?message=failed");
     }
 }

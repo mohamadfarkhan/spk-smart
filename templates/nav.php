@@ -1,5 +1,9 @@
 <body id="page-top">
 
+    <?php
+    date_default_timezone_set("Asia/Jakarta");
+    ?>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -14,11 +18,18 @@
                 <div class="sidebar-brand-text mx-3">SPK Smart</div>
             </a>
 
+            <!-- Nav Item Time -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <p id="jam"></p>
+                </a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -118,11 +129,11 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#passwordModal">
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#passwordModal">
                                     <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Ganti Kata Sandi
-                                </a>    
-                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
+                                </a>
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -163,20 +174,20 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                 <?php
-                                    include 'koneksi.php';
-                                    $sql = "SELECT * FROM user";
-                                    $query = mysqli_query($conn, $sql);
-                                    $user = mysqli_fetch_array($query)
+                                <?php
+                                include 'koneksi.php';
+                                $sql = "SELECT * FROM user";
+                                $query = mysqli_query($conn, $sql);
+                                $user = mysqli_fetch_array($query)
 
                                 ?>
                                 <form method="POST" action="change.php">
                                     <div class="form-group">
-                                        <label >Username</label>
+                                        <label>Username</label>
                                         <input type="text" class="form-control" value="<?= $_SESSION['username'] ?>" name="username" readonly>
                                     </div>
                                     <div class="form-group">
-                                        <label >Kata Sandi Baru</label>
+                                        <label>Kata Sandi Baru</label>
                                         <input type="password" class="form-control" name="password_baru" value="<?= $_SESSION['password'] ?>">
                                     </div>
                                     <div class="modal-footer">

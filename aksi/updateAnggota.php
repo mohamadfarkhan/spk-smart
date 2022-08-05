@@ -14,10 +14,8 @@ if (isset($_POST['update'])) {
             where id_anggota = '$id'";
     $result = mysqli_query($conn, $sql);
     if ($result) {
-        echo "<script>alert('Data Alternatif Berhasil di Update')</script>";
-        header("location:../dataAnggota.php");
+        header("location:../dataAnggota.php?message=success");
     } else {
-        echo "<script>alert('Update data gagal, silahkan coba lagi!')</script>";
-        header("location:../dataAnggota.php");
+        header("location:../dataAnggota.php?message=failed");
     }
 }

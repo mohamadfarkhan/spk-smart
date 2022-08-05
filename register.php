@@ -42,6 +42,23 @@ include 'koneksi.php';
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">BUAT AKUN BARU</h1>
                                     </div>
+                                    <?php
+                                    if (isset($_GET['message'])) {
+                                        if ($_GET['message'] == "success") {
+                                            echo "
+                                                <div class='alert alert-success'>
+                                                Akun berhasil dibuat, silahkan login!
+                                                </div>
+                                            ";
+                                        } else if ($_GET['message'] == "failed") {
+                                            echo "
+                                                <div class='alert alert-danger'>
+                                                Akun gagal dibuat, silahkan coba lagi!
+                                                </div>
+                                            ";
+                                        }
+                                    }
+                                    ?>
                                     <form action="aksi/buatAkun.php" method="POST">
                                         <div class="form-group">
                                             <input required class="form-control" placeholder="Masukkan Username..." name="user" type="text" autofocus>

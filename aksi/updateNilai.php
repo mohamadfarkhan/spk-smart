@@ -15,10 +15,8 @@ if (isset($_POST['update'])) {
             where id_nilai = '$id'";
     $result = mysqli_query($conn, $sql);
     if ($result) {
-        echo "<script>alert('Data Alternatif Berhasil di Update')</script>";
-        header("location:../dataNilai.php");
+        header("location:../dataNilai.php?message=success");
     } else {
-        echo "<script>alert('Update data gagal, silahkan coba lagi!')</script>";
-        header("location:../dataNilai.php");
+        header("location:../dataNilai.php?message=failed");
     }
 }

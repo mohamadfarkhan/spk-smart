@@ -7,6 +7,24 @@ include 'koneksi.php';
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
+  <?php
+  if (isset($_GET['message'])) {
+    if ($_GET['message'] == "success") {
+      echo "
+        <div class='alert alert-success'>
+          Selamat datang, $_SESSION[username]
+        </div>
+      ";
+    } else if ($_GET['message'] == "failed") {
+      echo "
+        <div class='alert alert-danger'>
+          Mohon coba lagi dan periksa kembali koneksi anda!
+        </div>
+      ";
+    }
+  }
+  ?>
+
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -103,10 +121,10 @@ include 'koneksi.php';
   <div class="row">
     <div class="card">
       <div class="col-lg">
-        <div class="card-header bg-info text-white">
+        <div class="card-header bg-info text-white mt-4">
           Sistem Pendukung Keputusan Metode Smart
         </div>
-        <div class="card-body alert alert-success mt-3">
+        <div class="card-body alert alert-success mt-2 mb-4">
           SMART (Simple Multi Attribute Rating Technique) merupakan metode pengambilan keputusan yang multi-atribut. Setiap pembuat keputusan harus memilih sebuah alternatif yang sesuai dengan tujuan yang telah dirumuskan. Setiap alternatif terdiri dari sekumpulan atribut dan setiap atribut mempunyai nilai-nilai.
         </div>
       </div>

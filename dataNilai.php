@@ -14,6 +14,29 @@ include 'koneksi.php';
                         <a href="nilai.php" class="float-right btn btn-info">Masukkan Nilai</a>
                     </h1>
                 </div>
+                <?php
+                if (isset($_GET['message'])) {
+                    if ($_GET['message'] == "success") {
+                        echo "
+                            <div class='alert alert-success ml-3 mr-3 mt-5'>
+                            Nilai Berhasil diubah!
+                            </div>
+                        ";
+                    } else if ($_GET['message'] == "failed") {
+                        echo "
+                            <div class='alert alert-danger ml-3 mr-3 mt-5'>
+                            Mohon coba lagi dan periksa kembali koneksi anda!
+                            </div>
+                        ";
+                    } else if ($_GET['message'] == "deleted") {
+                        echo "
+                            <div class='alert alert-danger ml-3 mr-3 mt-5'>
+                            Nilai berhasil dihapus!
+                            </div>
+                        ";
+                    }
+                }
+                ?>
                 <div class="card-body">
                     <div class="card-body">
                         <div class="table-responsive">

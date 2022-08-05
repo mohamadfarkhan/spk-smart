@@ -13,11 +13,9 @@ if (isset($_POST['tambah'])) {
     $sql = "INSERT INTO anggota (nama_anggota, kelamin, korwilda, no_hp) VALUES ('$nama','$kelamin','$korwilda','$noHp')";
     $query = mysqli_query($conn, $sql);
     if ($query) {
-        echo "<script type='text/Javascript'>alert('berhasil memasukkan data Alternatif')</script>";
-        header('location:../dataAnggota.php');
+        header("location:../anggota.php?message=success");
     } else {
-        echo "<script type='text/Javascript'>alert('Gagal Memasukkan data')</script>";
-        header('location:../anggota.php');
+        header("location:../anggota.php?message=failed");
     }
 } else {
 }
