@@ -61,18 +61,18 @@ include 'koneksi.php';
                                     ?>
                                     <form action="aksi/buatAkun.php" method="POST">
                                         <div class="form-group">
-                                            <input required class="form-control" placeholder="Masukkan Username..." name="user" type="text" autofocus>
+                                            <input required class="form-control" placeholder="Masukkan Username..." name="username" type="text" autofocus>
                                         </div>
                                         <div class="form-group">
-                                            <input required class="form-control" placeholder="Masukkan Nama Lengkap..." name="name" type="text" autofocus>
+                                            <input required class="form-control" placeholder="Masukkan Nama Lengkap..." name="nama" type="text" autofocus>
                                         </div>
                                         <div class="form-group">
-                                            <input required class="form-control" placeholder="Masukkan Password..." name="sandi" type="password" value="">
+                                            <input required class="form-control" placeholder="Masukkan Password..." name="password" type="password" value="">
                                         </div>
                                         <div class="form-group">
                                             <a class="small" href="login.php">Sudah punya akun! Login</a>
                                         </div>
-                                        <button type="submit" name="buat" class="btn btn-lg btn-success btn-user btn-block">BUAT AKUN</button>
+                                        <button type="submit" name="register" class="btn btn-lg btn-success btn-user btn-block">BUAT AKUN</button>
                                         <hr>
                                         <div class="copyright text-center my-auto">
                                             <span>Copyright &copy; Mohamad Farkhan 2022</span>

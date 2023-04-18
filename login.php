@@ -2,14 +2,14 @@
 session_start();
 include 'koneksi.php';
 
-$timeout = 1; // setting timeout dalam menit
-$logout = "logout.php"; // redirect halaman logout
+$timeout = 0.5; // setting timeout dalam menit
+$login = "login.php?message=sesi"; // redirect halaman logout
 $timeout = $timeout * 60; // menit ke detik
 if (isset($_SESSION['start_session'])) {
   $elapsed_time = time() - $_SESSION['start_session'];
   if ($elapsed_time >= $timeout) {
     session_destroy();
-    echo "<script type='text/javascript'>alert('Sesi telah berakhir');window.location='$logout'</script>";
+    echo "<script type='text/javascript'>alert('Sesi telah berakhir');window.location='$login'</script>";
   }
 }
 
@@ -68,7 +68,6 @@ if (isset($_GET['id'])) {
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">LOGIN SPK</h1>
-                    <a href="login.php"><img src="img/gambar.jpg" alt="logo_bismania" class="img-thumbnail mb-4"></a>
                   </div>
                   <?php
                   if (isset($_GET['message'])) {
@@ -85,7 +84,7 @@ if (isset($_GET['id'])) {
                                         Silahkan login kembali.
                                         </div>";
                     } else if ($_GET['message'] == "sesi") {
-                      echo "<div class='alert alert-success'>
+                      echo "<div class='alert alert-warning'>
                                         Sesi anda telah berakhir, Silahkan login kembali.
                                         </div>";
                     }
@@ -101,7 +100,7 @@ if (isset($_GET['id'])) {
                       </div>
                       <div class="form-group">
                         <div class="custom-control custom-checkbox small">
-                          <input type="checkbox" class="custom-control-input" id="customCheck">
+                          <input type="checkbox" class="custom-control-input" id="customCheck" name="remember_me">
                           <label class="custom-control-label" for="customCheck">Remember Me</label>
                         </div>
                       </div>
@@ -123,15 +122,34 @@ if (isset($_GET['id'])) {
                     $sqllogin = "SELECT * FROM user WHERE username='$username' AND password='$password'";
                     $querylogin = mysqli_query($conn, $sqllogin);
 
+                    function generateToken($length = 25)
+                    {
+                      $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                      $charactersLength = strlen($characters);
+                      $token = '';
+                      for ($i = 0; $i < $length; $i++) {
+                        $token = $characters[rand(0, $charactersLength - 1)];
+                      }
+                      return $token;
+                    }
+
+                    if (isset($_POST['remember_me'])) {
+                      $token = generateToken();
+                      setcookie('remember_me', $token, time() + (1 * 24 * 60 * 60), '/');
+                    }
+
+                    if (isset($_COOKIE['remember_me'])) {
+                    }
+
                     if (mysqli_num_rows($querylogin) > 0) {
                       $_SESSION['username'] = $username;
                       $_SESSION['password'] = $password;
                       $_SESSION['stat'] = 'masuk';
                       echo "<script type ='text/JavaScript'>alert('berhasil masuk selamat datang $username ')</script>";
                       echo ($_SESSION['stat']);
-                      header("location:index.php?pesan=sukses");
+                      header("location:index.php");
                     } else {
-                      header("location:login.php?pesan=gagal");
+                      header("location:login.php?message=gagal");
                     }
                   }
                   ?>
@@ -146,7 +164,6 @@ if (isset($_GET['id'])) {
     </div>
 
   </div>
-
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
